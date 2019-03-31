@@ -1,14 +1,13 @@
-FROM alpine:3.7
+FROM python:3.8.0a3-alpine3.9
 
 ARG NVIM_PLUGINS_FILE=./config/nvim/init.vim
 
+
 RUN apk add git \
-        neovim \
         curl \
         bash
 
-# TODO: check this command
-# RUN pip3 install nvim
+RUN pip3 install neovim --upgrade
 
 WORKDIR /root
 
@@ -30,4 +29,4 @@ ENV FZF_DEFAULT_COMMAND='find * -type f'
 
 WORKDIR /project
 
-CMD "/bin/sh"
+CMD "nvim"
