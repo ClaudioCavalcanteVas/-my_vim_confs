@@ -4,10 +4,9 @@ ARG NVIM_PLUGINS_FILE=./config/nvim/init.vim
 
 
 RUN apk add git \
+        neovim \
         curl \
         bash
-
-RUN pip3 install neovim --upgrade
 
 WORKDIR /root
 
