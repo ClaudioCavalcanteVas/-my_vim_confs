@@ -6,16 +6,19 @@ ARG NVIM_PLUGINS_FILE=./config/nvim/init.vim
 RUN apk add git \
         neovim \
         curl \
-        bash
+        bash \
+        gcc \
+        musl-dev \ 
+        # For NVim's Ack Plugin
+        ack \ 
+        # For Nvim's YCM Plugin
+        cmake && \ 
+        # Plug - Plugin manager for Vim and NEOVim
+        curl -fLo /root/.local/share/nvim/site/autoload/plug.vim \
+            --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && \
+        pip install pynvim
 
 WORKDIR /root
-
-# Plug - Plugin manager for Vim and NEOVim
-RUN curl -fLo /root/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# Step to clean temp folder
-RUN rm -rf /tmp/*
 
 VOLUME [".config/nvim", "/project"]
 

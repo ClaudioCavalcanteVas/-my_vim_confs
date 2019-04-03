@@ -17,6 +17,7 @@ set smarttab
 set expandtab
 set laststatus=2
 set cursorline
+set nocompatible
 
 """ Plugs
 """"""""""""
@@ -30,9 +31,10 @@ call plug#begin("/root/.local/share/nvim/plugged")
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'} 
 Plug 'junegunn/fzf.vim'
-Plug 'Townk/vim-autoclose' "This plugin will autoclose the some characteres
 Plug 'mileszs/ack.vim' "Search word inside folder
-Plug 'Shougo/deoplete.nvim' "Autocomplete
+" Has an error, must fix before install
+" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} "Autocomplete
+Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --all'}
 
 " Programming
 Plug 'vim-syntastic/syntastic' "Lint
@@ -96,5 +98,6 @@ map <C-m> :NERDTreeToggle<CR>
 
 " To Activate FZF filter
 map <C-p> :Files<CR>
+
 
 set tags=tags
