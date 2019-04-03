@@ -33,8 +33,8 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim' "Search word inside folder
 " Has an error, must fix before install
-" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} "Autocomplete
-Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --all'}
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} "Autocomplete
+" Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --all'}
 
 " Programming
 Plug 'vim-syntastic/syntastic' "Lint
@@ -83,7 +83,7 @@ autocmd FileType javascript let b:syntastic_javascript_jscs_args =
     \ FindConfig('-c', '.jscsrc', expand('<afile>:p:h', 1))
 
 " Enable at vim start
-let g:neocomplete#enable_at_startup = 1
+let g:ycm_key_list_select_completion = ['<Down>']
 
 """ Themes Configuration
 """""""""""""""""""""""""
@@ -99,5 +99,6 @@ map <C-m> :NERDTreeToggle<CR>
 " To Activate FZF filter
 map <C-p> :Files<CR>
 
-
+" YouCompleteMe commands
+noremap <expr> <Tab> pumvisible() ? "\<C-n>" : "ᐅ"
 set tags=tags
