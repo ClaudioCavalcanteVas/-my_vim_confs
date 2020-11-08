@@ -18,6 +18,7 @@ set expandtab
 set laststatus=2
 set cursorline
 set nocompatible
+set nowrap
 
 """ Plugs
 """"""""""""
@@ -25,7 +26,7 @@ set nocompatible
 " Plug's initialization - Plug manager
 " git: https://github.com/junegunn/vim-plug
 
-call plug#begin("/root/.local/share/nvim/plugged")
+call plug#begin()
 
 " Utilities
 Plug 'scrooloose/nerdtree'
@@ -33,7 +34,6 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim' "Search word inside folder
 " Has an error, must fix before install
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'} "Autocomplete
 " Plug 'Valloric/YouCompleteMe', {'do': 'python3 install.py --all'}
 
 " Programming
@@ -61,7 +61,6 @@ filetype plugin indent on " To start the airline functions
 """ Plugs Configuration
 
 " Deoplete
-let g:deoplete#enable_at_startup = 1
 
 " Syntastic Lint
 set statusline+=%#warningmsg#
@@ -71,6 +70,8 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>E :SyntasticCheck<CR>
 
 " For Javascript
 function! FindConfig(prefix, what, where)
